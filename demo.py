@@ -1,11 +1,12 @@
 from flask import Flask
-from flask import render_template
+from flask import render_template, send_from_directory
 
 app = Flask(__name__)
 
 @app.route('/')
 def page1():
-    return "HELLO!"
+    return send_from_directory('static', "index.html")
+
 
 @app.route('/hello/')
 @app.route('/hello/<name>')
