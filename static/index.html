@@ -35,6 +35,27 @@
             bottom: 0;
             width: 100%;
         }
+        form {
+            margin-top: 20px;
+        }
+        input[type="text"] {
+            padding: 10px;
+            width: 70%;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #35424a;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #556270;
+        }
     </style>
 </head>
 <body>
@@ -45,17 +66,27 @@
         <h2>About This Site</h2>
         <p>This is a simple example of a basic HTML website. It includes a header, a main content area, and a footer. The page also has some basic styling for a clean and simple appearance.</p>
         
-        <h3>Features</h3>
-        <ul>
-            <li>Responsive layout</li>
-            <li>Clean design</li>
-            <li>Simple structure</li>
-        </ul>
-        
-        <p>Feel free to modify this code and use it as a starting point for your own projects!</p>
+        <h3>Input Form</h3>
+        <p>Enter some text in the box below and press the button to navigate to a new page:</p>
+        <form id="inputForm">
+            <input type="text" id="userInput" placeholder="Enter the school you want to transfer to" required>
+            <button type="button" onclick="redirect()">Submit</button>
+        </form>
     </main>
     <footer>
         <p>&copy; 2024 Example Website</p>
     </footer>
+
+    <script>
+        function redirect() {
+            const input = document.getElementById('userInput').value;
+            if (input.trim()) {
+                const encodedInput = encodeURIComponent(input);
+                window.location.href = `/school?from=${encodedInput}`;
+            } else {
+                alert('Please enter some text before submitting!');
+            }
+        }
+    </script>
 </body>
 </html>
